@@ -6,15 +6,33 @@ dev
 
 - \[Short description of non-trivial change.\]
 
+
+2.28.0 (2022-06-08)
+-------------------
+
+**Improvements**
+
+- Wrap JSON parsing issues in Request's JSONDecodeError for payloads without
+  an encoding to make `json()` API consistent. (#6097)
+- Parse header components consistently, raising an InvalidHeader error in
+  all invalid cases. (#6154)
+- Added provisional 3.11 support with current beta build.
+
 **Bugfixes**
 
 - Fixed urllib3 exception leak, wrapping `urllib3.exceptions.SSLError` with
-  `requests.exceptions.SSLError` for `content` and `iter_content`.
+  `requests.exceptions.SSLError` for `content` and `iter_content`. (#6057)
+- Fixed issue where invalid Windows registry entires caused proxy resolution
+  to raise an exception rather than ignoring the entry. (#6149)
+- Fixed bug where setting `CA_CERT_BUNDLE` to an empty string would disable
+  cert verification. (#6074)
+- Fixed issue where entire payload could be included in the error message for
+  JSONDecodeError. (#6036)
 
 **Deprecations**
 
-- ⚠️ Requests has officially dropped support for Python 2.7. ⚠️
-- Requests has officially dropped support for Python 3.6 (including pypy3).
+- ⚠️ Requests has officially dropped support for Python 2.7. ⚠️ (#6091)
+- Requests has officially dropped support for Python 3.6 (including pypy3). (#6091)
 
 2.27.1 (2022-01-05)
 -------------------
