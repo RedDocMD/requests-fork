@@ -20,15 +20,16 @@ try:
 except ImportError:
     chardet = None
 
-try:
-    from urllib3.contrib import pyopenssl
-except ImportError:
-    pyopenssl = None
-    OpenSSL = None
-    cryptography = None
-else:
-    import cryptography
-    import OpenSSL
+# try:
+    # from urllib3.contrib import pyopenssl
+    pass
+# except ImportError:
+pyopenssl = None
+OpenSSL = None
+cryptography = None
+# else:
+#     import cryptography
+#     import OpenSSL
 
 
 def _implementation():
@@ -46,20 +47,20 @@ def _implementation():
 
     if implementation == "CPython":
         implementation_version = platform.python_version()
-    elif implementation == "PyPy":
-        implementation_version = "{}.{}.{}".format(
-            sys.pypy_version_info.major,
-            sys.pypy_version_info.minor,
-            sys.pypy_version_info.micro,
-        )
-        if sys.pypy_version_info.releaselevel != "final":
-            implementation_version = "".join(
-                [implementation_version, sys.pypy_version_info.releaselevel]
-            )
-    elif implementation == "Jython":
-        implementation_version = platform.python_version()  # Complete Guess
-    elif implementation == "IronPython":
-        implementation_version = platform.python_version()  # Complete Guess
+    # elif implementation == "PyPy":
+    #     implementation_version = "{}.{}.{}".format(
+    #         sys.pypy_version_info.major,
+    #         sys.pypy_version_info.minor,
+    #         sys.pypy_version_info.micro,
+    #     )
+    #     if sys.pypy_version_info.releaselevel != "final":
+    #         implementation_version = "".join(
+    #             [implementation_version, sys.pypy_version_info.releaselevel]
+    #         )
+    # elif implementation == "Jython":
+    #     implementation_version = platform.python_version()  # Complete Guess
+    # elif implementation == "IronPython":
+    #     implementation_version = platform.python_version()  # Complete Guess
     else:
         implementation_version = "Unknown"
 

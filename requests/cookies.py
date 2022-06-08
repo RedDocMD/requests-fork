@@ -14,10 +14,11 @@ import time
 from ._internal_utils import to_native_string
 from .compat import Morsel, MutableMapping, cookielib, urlparse, urlunparse
 
-try:
-    import threading
-except ImportError:
-    import dummy_threading as threading
+# try:
+#     import threading
+# except ImportError:
+#     import dummy_threading as threading
+import threading
 
 
 class MockRequest:
